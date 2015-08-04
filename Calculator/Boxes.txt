@@ -1,0 +1,10 @@
+La vista esta compuesta por un GridLayout principal en el cual se 
+incluye el display (el mismo objeto presente en todas las vistas),
+un layout vertical donde estan los botones de cambio de vistas y un
+GroupBox (widget) en el que se pueden aplicar acciones como
+esconder o mostrar, asi se cambia entre las distintas vistas.
+Dentro de estos GroupBox se encuentra un GridLayout donde se 
+incluyen objetos como los botones de una vista u otras funciones
+que esta tenga. Por lo tanto, se puede hablar de una red en forma
+de raiz, donde el primer elemento seria el GridLayout principal,
+seguido por el layout vertical y los GroupBox de cada vista.

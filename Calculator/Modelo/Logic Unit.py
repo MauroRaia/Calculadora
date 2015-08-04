@@ -8,8 +8,8 @@ class Operacion():
         self.fnum = 0
         self.snum = 0
 
-    def logWithBase(self, x, base):
-        r = math.log(x, base)
+    def logWithBase(self, x):
+        r = math.log(x, 10)
         self.result = r
 
     def cos(self, x):
