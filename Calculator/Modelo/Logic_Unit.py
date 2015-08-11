@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import math
 
-class Operacion():
+class Logic_Unit():
 
     def __init__(self):
         self.result = 0
