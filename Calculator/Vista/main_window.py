@@ -72,6 +72,7 @@ class MainWindow (QtGui.QWidget):
         self.button_sub.clicked.connect(self.controller.write)
         self.button_mul.clicked.connect(self.controller.write)
         self.button_div.clicked.connect(self.controller.write)
+        self.button_solve.clicked.connect(lambda: self.controller.do(self.display.text()))
 
         layout_grid_fv = QtGui.QGridLayout()
         layout_grid_fv.addWidget(self.number_1, 0, 0)
