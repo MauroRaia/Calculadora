@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import sys
+from PyQt4.QtCore import *
 from PyQt4 import QtGui
 sys.path.append("../Controlador")
 from Controller import *
@@ -17,6 +18,7 @@ class MainWindow (QtGui.QWidget):
         self.main_gridLayout = QtGui.QGridLayout()
         self.display = QtGui.QLineEdit("0")
         self.display.setReadOnly(True)
+        button_erase = QtGui.QPushButton("X")
         button_fv = QtGui.QPushButton("Calculadora")
         button_sv = QtGui.QPushButton("Calculadora cientifica")
         button_tv = QtGui.QPushButton("Calculadora Binaria")
@@ -30,6 +32,7 @@ class MainWindow (QtGui.QWidget):
         button_sv.clicked.connect(self.showSV)
         button_cv.clicked.connect(self.showCV)
         button_tv.clicked.connect(self.showTV)
+        button_erase.clicked.connect(self.controller.erase_last)
 
 ##First view | Primera vista (Listo)
 
@@ -184,7 +187,9 @@ class MainWindow (QtGui.QWidget):
 
 ##Integración de boxes al main_gridLayout
 
-        self.main_gridLayout.addWidget(self.display, 0, 0, 1, -1)
+        self.main_gridLayout.addWidget(self.display, 0, 1, 1, 1)
+        button_erase.setFixedWidth(32)
+        self.main_gridLayout.addWidget(button_erase, 0, 0, 1, 1, Qt.AlignRight)
         self.main_gridLayout.addLayout(self.main_verticalLayout, 1, 0, 1, 1)
 
         self.main_gridLayout.addWidget(self.box_fv, 1, 1, 1, 1)

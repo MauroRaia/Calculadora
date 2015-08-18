@@ -34,45 +34,29 @@ class MainController():
     def clear(self):
         self.window.display.setText("0")
 
-    def do(self, text_f):
-
-        if (text_f.rfind("(")) != -1:
+    def do(self, text):
+        text_f = str(text)
+        if (text_f.find("(")) != -1:
             self.parh_position_1 = text_f.rfind("(")
             self.parh_position_2 = text_f.find(")")
             string_2 = (text_f[self.parh_position_1 : (self.parh_position_2 + 1)])
-            print (string_2)
             text_2 = text_f.replace((str(string_2)), (str(self.operation(string_2))), 1)
-            print (text_2)
             self.do(text_2)
         else:
             text_2 = self.operation(text_f)
-            self.window.display.setText(text_2)
+            self.window.display.setText((str(text_2)))
             self.window.display.update()
 
     def operation(self, text):
-        if (text.find("+")) != -1:
-            self.position_o = text.find("+")
-            print (text[self.position_o + 1])
-            print (text[self.position_o])
-            num_1 = int(text[self.position_o - 1])
-            num_2 = int(text[self.position_o + 1])
-            resultado = (num_1 + num_2)
-            text_replace = (text[(self.position_o - 1) : (self.position_o + 2)])
-            text_2 = text.replace(str(text_replace), str(resultado), 1)
-            self.operation(text_2)
-        elif (text.find("*")) != -1:
-            self.position_o = text.find("*")
-            num_1 = int(text[self.position_o - 1])
-            num_2 = int(text[self.position_o + 1])
-            print (num_1)
-            print (num_2)
-            resultado = (num_1 * num_2)
-            text_replace = (text[(self.position_o - 1) : (self.position_o + 2)])
-            text_2 = text.replace(str(text_replace), str(resultado), 1)
-            print (text_2)
-            self.operation(text_2)
-        else:
-            return text
+        result = eval(text)
+        return result
 
+    def erase_last(self):
+        text = str(self.window.display.text())
+        new_text = text[:-1]
+        self.window.display.setText(new_text)
+
+    try:
+        self.ejecutar("(((")
 
 
