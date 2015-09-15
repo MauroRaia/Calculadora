@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 from PyQt4.QtCore import *
-from PyQt4 import QtGui
+from PyQt4 import QtGui, QtCore
 sys.path.append("../Controlador")
 from Controller import *
 
@@ -174,12 +174,15 @@ class MainWindow (QtGui.QWidget):
 
         button_dec = QtGui.QPushButton("Convertir a decimal")
         button_bin = QtGui.QPushButton("Convertir a binario")
-        input_text = QtGui.QLineEdit("Inserte el numero a convertir")
+        self.input_text = QtGui.QLineEdit("Inserte el numero a convertir")
 
         layout_grid_cv = QtGui.QGridLayout()
-        layout_grid_cv.addWidget(input_text)
+        layout_grid_cv.addWidget(self.input_text)
         layout_grid_cv.addWidget(button_dec)
         layout_grid_cv.addWidget(button_bin)
+
+        button_bin.clicked.connect(self.controller.int_to_bin)
+        button_dec.clicked.connect(self.controller.bin_to_int)
 
         self.box_cv = QtGui.QGroupBox()
         self.box_cv.setLayout(layout_grid_cv)
@@ -197,6 +200,17 @@ class MainWindow (QtGui.QWidget):
         self.main_gridLayout.addWidget(self.box_tv, 1, 1, 1, 1)
         self.setLayout(self.main_gridLayout)
         self.show()
+
+##TECLAS
+
+    def keyPressEvent(self, e):
+        value = str(e.text())
+        text_d = (str(self.display.text())) + value
+        if  (str(self.display.text())) == "0":
+            self.display.setText(value)
+        else:
+            self.display.setText(text_d)
+
 
 ##Button actions | Acciones de los botones
 

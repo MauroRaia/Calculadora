@@ -35,28 +35,23 @@ class MainController():
         self.window.display.setText("0")
 
     def do(self, text):
-        text_f = str(text)
-        if (text_f.find("(")) != -1:
-            self.parh_position_1 = text_f.rfind("(")
-            self.parh_position_2 = text_f.find(")")
-            string_2 = (text_f[self.parh_position_1 : (self.parh_position_2 + 1)])
-            text_2 = text_f.replace((str(string_2)), (str(self.operation(string_2))), 1)
-            self.do(text_2)
-        else:
-            text_2 = self.operation(text_f)
-            self.window.display.setText((str(text_2)))
-            self.window.display.update()
+        result = eval((str(text)))
+        self.window.display.setText(str(result))
 
-    def operation(self, text):
-        result = eval(text)
-        return result
 
     def erase_last(self):
         text = str(self.window.display.text())
         new_text = text[:-1]
         self.window.display.setText(new_text)
 
-    try:
-        self.ejecutar("(((")
+    def int_to_bin(self):
+        x = str(self.window.input_text.text())
+        result = "{0:b}".format(x) #TIRA ERROR
+        self.window.display.setText(result)
+
+    def bin_to_int(self):
+        x = str(self.window.input_text.text())
+        result = str(int( x, 2))
+        self.window.display.setText(result)
 
 
