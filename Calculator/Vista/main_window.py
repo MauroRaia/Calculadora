@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys
 from PyQt4.QtCore import *
-from PyQt4 import QtGui, QtCore
+from PyQt4 import QtGui
 sys.path.append("../Controlador")
 from Controller import *
 
@@ -139,31 +139,30 @@ class MainWindow (QtGui.QWidget):
 
 ## Third view | Tercera vista
 
-        self.binary_1 = QtGui.QPushButton("1")
-        self.binary_2 = QtGui.QPushButton("2")
+        self.first_bin = QtGui.QLineEdit("Ingresar primer binario")
+        self.second_bin = QtGui.QLineEdit("Ingresar segundo binario")
         self.binary_sum = QtGui.QPushButton("+")
         self.binary_sub = QtGui.QPushButton("-")
         self.binary_mul = QtGui.QPushButton("*")
         self.binary_div = QtGui.QPushButton("/")
         self.binary_solve = QtGui.QPushButton("=")
-        self.binary_1.clicked.connect(self.controller.write)
-        self.binary_2.clicked.connect(self.controller.write)
-        self.binary_sum.clicked.connect(self.controller.write)
-        self.binary_sub.clicked.connect(self.controller.write)
-        self.binary_mul.clicked.connect(self.controller.write)
-        self.binary_div.clicked.connect(self.controller.write)
+
+        self.binary_sum.clicked.connect(self.controller.do_binary)
+        self.binary_sub.clicked.connect(self.controller.do_binary)
+        self.binary_mul.clicked.connect(self.controller.do_binary)
+        self.binary_div.clicked.connect(self.controller.do_binary)
+        self.binary_solve.clicked.connect(self.controller.do_binary)
 
         box_tv_1 = QtGui.QGridLayout()
-        box_tv_1.addWidget(self.binary_1, 0, 0, -1, 1)
-        box_tv_1.addWidget(self.binary_2, 0, 1, -1, 1)
-        box_tv_1.addWidget(self.binary_sum, 0, 2, 1, 1)
-        box_tv_1.addWidget(self.binary_sub, 1, 2, 1, 1)
-        box_tv_1.addWidget(self.binary_mul, 2, 2, 1, 1)
-        box_tv_1.addWidget(self.binary_div, 3, 2, 1, 1)
-        box_tv_1.addWidget(self.binary_solve, 0, 3, -1, 1)
-        self.binary_1.setFixedHeight(128)
-        self.binary_2.setFixedHeight(128)
-        self.binary_solve.setFixedHeight(128)
+        box_tv_1.addWidget(self.binary_sum, 0, 0, 1, 1)
+        box_tv_1.addWidget(self.binary_sub, 1, 0, 1, 1)
+        box_tv_1.addWidget(self.binary_mul, 0, 1, 1, 1)
+        box_tv_1.addWidget(self.binary_div, 0, 2, 1, 1)
+        box_tv_1.addWidget(self.binary_solve, 1, 2, 1, 1)
+        box_tv_1.addWidget(self.first_bin, 2, 0, 1, -1)
+        box_tv_1.addWidget(self.second_bin, 3, 0, 1, -1)
+        self.binary_solve.setFixedHeight(32)
+
 
         self.box_tv = QtGui.QGroupBox()
         self.box_tv.setLayout(box_tv_1)

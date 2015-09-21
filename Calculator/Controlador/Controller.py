@@ -46,7 +46,7 @@ class MainController():
 
     def int_to_bin(self):
         x = str(self.window.input_text.text())
-        result = "{0:b}".format(x) #TIRA ERROR
+        result = "{0:b}".format(x)
         self.window.display.setText(result)
 
     def bin_to_int(self):
@@ -54,4 +54,22 @@ class MainController():
         result = str(int( x, 2))
         self.window.display.setText(result)
 
-
+    def do_binary(self):
+        x = str(self.window.first_bin.text())
+        y = str(self.window.second_bin.text())
+        sender = self.window.sender()
+        text = str(sender.text())
+        if text == "+":
+            result =  "{0:b}".format((int(x, 2)) + (int(y,2)))
+            self.window.display.setText(result)
+        elif text == "-":
+            result =  "{0:b}".format((int(x, 2)) - (int(y,2)))
+            self.window.display.setText(result)
+        elif text == "*":
+            result =  "{0:b}".format((int(x, 2)) * (int(y,2)))
+            self.window.display.setText(result)
+        elif text == "/":
+            result =  "{0:b}".format((int(x, 2)) / (int(y,2)))
+            self.window.display.setText(result)
+        else:
+            self.window.display.setText("Erroneo")
